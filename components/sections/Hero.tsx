@@ -15,10 +15,21 @@ import Image from "next/image";
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 200], [1, 0]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (shouldReduceMotion) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+  };
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-bg-primary pt-20">
+    <section 
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-bg-primary pt-20"
+      onMouseMove={handleMouseMove}
+    >
       <FloatingPaperElements variant="mixed" count={6} />
       {/* Main Content */}
       <div className="relative z-20 flex w-full max-w-7xl flex-col-reverse items-center justify-between px-6 pt-12 md:flex-row md:items-center lg:px-12">
@@ -130,21 +141,30 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 flex w-full items-center justify-center md:mb-0 md:w-1/2 relative"
         >
-          <div className="absolute inset-0 -z-10">
-            <Image src="/assets/banner_bg_circle.webp" alt="Background Circle" fill className="object-contain opacity-50" />
-          </div>
-          <DecorativeIcon icon="lightbulb" className="-top-8 -left-4" size={48} rotation={-12} color="#ff7c00" opacity={0.3} />
-          <DecorativeIcon icon="starburst" className="top-10 right-4" size={32} rotation={15} color="#f59337" opacity={0.4} />
-          <DecorativeIcon icon="questionBubble" className="bottom-4 -left-8" size={40} rotation={-5} color="#4229d5" opacity={0.2} />
+          {/* Mouse-follow glow effect background */}
+          <motion.div
+            className="pointer-events-none absolute inset-0 -z-20 opacity-30 transition-opacity duration-300"
+            style={{
+              background: "radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 124, 0, 0.15), transparent 40%)",
+            }}
+          />
 
-          <div className="relative flex aspect-square w-full max-w-[500px] items-center justify-center">
-            <Image
-              src="/assets/hero.svg"
-              alt="UNOSQ Hero Illustration"
-              width={500}
-              height={500}
-              className="object-contain"
-            />
+          <div className="relative flex aspect-square w-full max-w-[450px] items-center justify-center">
+            {/* Background Circle Frame */}
+            <div className="absolute inset-0 -z-10 flex items-center justify-center">
+              <Image src="/assets/banner_bg_circle.webp" alt="Background Circle" fill className="object-contain opacity-70 animate-[spin_60s_linear_infinite]" />
+            </div>
+            
+            {/* Visual (Circular Mask) */}
+            <div className="relative z-10 aspect-square w-[75%] overflow-hidden rounded-full border-4 border-white shadow-xl bg-white p-4">
+              <Image src="/assets/hero.svg" alt="UNOSQ Student" fill className="object-contain" />
+            </div>
+
+            {/* Orbiting / Scattered Doodle Accents */}
+            <DecorativeIcon icon="lightbulb" className="absolute -top-4 -left-4 z-20 drop-shadow-md" size={56} rotation={-12} color="#ff7c00" opacity={0.9} />
+            <DecorativeIcon icon="starburst" className="absolute top-12 -right-8 z-20 drop-shadow-md" size={40} rotation={15} color="#f59337" opacity={0.9} />
+            <DecorativeIcon icon="questionBubble" className="absolute bottom-8 -left-12 z-20 drop-shadow-md" size={48} rotation={-5} color="#4229d5" opacity={0.9} />
+            <DecorativeIcon icon="pencil" className="absolute -bottom-6 right-0 z-20 drop-shadow-md" size={44} rotation={45} color="#1677ff" opacity={0.9} />
           </div>
         </motion.div>
 

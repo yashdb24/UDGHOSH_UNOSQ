@@ -37,8 +37,8 @@ function PoolCard({ pool, index }: { pool: typeof POOLS[0]; index: number }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 50, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className="perspective-1000"
@@ -54,9 +54,9 @@ function PoolCard({ pool, index }: { pool: typeof POOLS[0]; index: number }) {
           transformStyle: "preserve-3d",
           borderTop: `4px solid ${pool.hex}`,
         }}
-        className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white p-8 shadow-card hover:shadow-card-hover transition-[box-shadow] duration-300"
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white p-6 sm:p-8 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300"
       >
-        {/* Glow behind card on hover (Optional, simplified for light mode) */}
+        {/* Glow behind card on hover */}
         <div
           className="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
@@ -66,7 +66,7 @@ function PoolCard({ pool, index }: { pool: typeof POOLS[0]; index: number }) {
 
         {/* Content */}
         <div className="relative z-10 flex h-full flex-col" style={{ transform: "translateZ(30px)" }}>
-          <div className="mb-8 flex items-start justify-between">
+          <div className="mb-6 flex items-start justify-between">
             <div
               className="inline-flex rounded-full border px-3 py-1 font-inter text-xs font-semibold uppercase tracking-widest"
               style={{
@@ -80,7 +80,7 @@ function PoolCard({ pool, index }: { pool: typeof POOLS[0]; index: number }) {
             
             {/* Watermark Number */}
             <div
-              className="absolute -right-4 -top-6 select-none font-space-grotesk text-[6rem] font-extrabold leading-none"
+              className="absolute -right-4 -top-6 select-none font-space-grotesk text-[5rem] font-extrabold leading-none"
               style={{ color: `${pool.hex}1F` }}
             >
               {pool.number}
@@ -88,7 +88,12 @@ function PoolCard({ pool, index }: { pool: typeof POOLS[0]; index: number }) {
             </div>
           </div>
 
-          <h3 className="mb-4 font-space-grotesk text-2xl font-bold text-text-primary">
+          {/* Thumbnail Placeholder */}
+          <div className="relative mb-6 h-28 w-full rounded-xl overflow-hidden bg-gray-100 animate-pulse flex items-center justify-center">
+            <span className="text-gray-400 font-inter text-[10px] font-medium uppercase tracking-widest">Pool Photo</span>
+          </div>
+
+          <h3 className="mb-3 font-space-grotesk text-2xl font-bold text-text-primary">
             {pool.name}
           </h3>
           <p className="flex-1 font-inter text-[14.4px] leading-relaxed text-text-secondary">

@@ -32,8 +32,8 @@ const config: Config = {
         },
       },
       boxShadow: {
-        card: "0 8px 32px rgba(0, 0, 0, 0.04)",
-        "card-hover": "0 16px 48px rgba(0, 0, 0, 0.08)",
+        card: "0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.05), 0 16px 32px rgba(0, 0, 0, 0.1)",
+        "card-hover": "0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.05), 0 24px 48px rgba(0, 0, 0, 0.15)",
       },
       fontFamily: {
         "space-grotesk": ["var(--font-space-grotesk)", "sans-serif"],
@@ -44,7 +44,7 @@ const config: Config = {
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
         "orb-drift": {
           "0%, 100%": { transform: "translate(0px, 0px)" },

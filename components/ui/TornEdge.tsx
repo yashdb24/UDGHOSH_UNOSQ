@@ -19,8 +19,8 @@ export function TornEdge({ fillColor = "#FFFFFF", className, top = false }: Torn
   return (
     <div
       className={cn(
-        "absolute left-0 right-0 z-10 w-full overflow-hidden pointer-events-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.02)]",
-        top ? "top-0 -translate-y-[99%]" : "bottom-0 translate-y-[99%]",
+        "absolute left-0 right-0 z-10 w-full overflow-hidden pointer-events-none drop-shadow-[0_8px_12px_rgba(0,0,0,0.08)]",
+        top ? "top-0 -translate-y-[99%] rotate-180" : "bottom-0 translate-y-[99%]",
         className
       )}
       style={{ height: "40px" }}
@@ -34,13 +34,11 @@ export function TornEdge({ fillColor = "#FFFFFF", className, top = false }: Torn
         <path d={pathD} fill={fillColor} />
         {/* Subtle noise overlay specifically inside the path to give paper texture */}
         {!shouldReduceMotion && (
-          <path d={pathD} fill="url(#paper-noise)" style={{ mixBlendMode: 'multiply', opacity: 0.05 }} />
+          <path d={pathD} fill="url(#paper-texture)" style={{ mixBlendMode: 'multiply', opacity: 0.15 }} />
         )}
         <defs>
-          <pattern id="paper-noise" width="4" height="4" patternUnits="userSpaceOnUse">
-             <rect width="4" height="4" fill="#000000" opacity="0.3" />
-             <rect width="1" height="1" fill="#ffffff" opacity="0.8" />
-             <rect x="2" y="2" width="1" height="1" fill="#ffffff" opacity="0.8" />
+          <pattern id="paper-texture" patternUnits="userSpaceOnUse" width="1200" height="200">
+            <image href="/elements/crushed_paper_background.png" x="0" y="0" width="1200" height="200" preserveAspectRatio="none" />
           </pattern>
         </defs>
       </svg>

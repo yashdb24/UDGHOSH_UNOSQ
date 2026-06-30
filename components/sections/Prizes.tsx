@@ -24,7 +24,7 @@ export function Prizes() {
   };
 
   return (
-    <section id="prizes" className="relative w-full bg-bg-secondary py-32 md:py-36">
+    <section id="prizes" className="relative w-full bg-brand-gold/[0.02] py-32 md:py-36">
       <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           05 / REWARDS
@@ -39,67 +39,93 @@ export function Prizes() {
         />
 
         {/* Top Prize Showcase */}
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mb-16 flex w-full max-w-3xl flex-col items-center justify-center overflow-hidden rounded-[20px] border border-brand-gold/30 bg-soft-gold p-12 text-center md:p-16 shadow-card"
-        >
-          <DecorativeIcon icon="trophy" className="absolute top-10 left-10" size={48} rotation={-15} color="#f59337" opacity={0.3} />
-          <DecorativeIcon icon="medal" className="absolute bottom-10 right-10" size={40} rotation={20} color="#ff7c00" opacity={0.3} />
-          <DecorativeIcon icon="ribbon" className="absolute top-16 right-16" size={32} rotation={-10} color="#4229d5" opacity={0.2} />
-          <DecorativeIcon icon="podium" className="absolute bottom-12 left-16" size={40} rotation={10} color="#1677ff" opacity={0.2} />
-          
-          <div className="mb-6 relative w-24 h-24 sm:w-32 sm:h-32">
-            <Image src="/assets/Trophy_icon.svg" alt="Trophy" fill className="object-contain" />
+        <div className="relative w-full max-w-3xl mb-16">
+          {/* Decorative Frame */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-30 pointer-events-none w-[115%] h-[125%]">
+            <Image src="/elements/background-removed (4).png" alt="Decorative Frame" fill className="object-contain" />
           </div>
-          <h3 className="mb-4 font-space-grotesk text-[clamp(4rem,8vw,6rem)] font-extrabold leading-none tracking-tight text-brand-gold">
-            ₹50,000+
-          </h3>
-          <p className="font-inter text-lg text-text-secondary md:text-[1.1rem]">
-            in prizes, gadgets, and merchandise
-          </p>
-        </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="group flex flex-col items-center justify-center overflow-hidden rounded-[20px] border border-brand-gold/30 bg-soft-gold p-12 text-center md:p-16 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300"
+          >
+            <DecorativeIcon icon="trophy" className="absolute top-10 left-10 transition-transform duration-300 group-hover:scale-110" size={48} rotation={-15} color="#f59337" opacity={0.3} />
+            <DecorativeIcon icon="medal" className="absolute bottom-10 right-10 transition-transform duration-300 group-hover:scale-110" size={40} rotation={20} color="#ff7c00" opacity={0.3} />
+            <DecorativeIcon icon="ribbon" className="absolute top-16 right-16 transition-transform duration-300 group-hover:scale-110" size={32} rotation={-10} color="#4229d5" opacity={0.2} />
+            <DecorativeIcon icon="podium" className="absolute bottom-12 left-16 transition-transform duration-300 group-hover:scale-110" size={40} rotation={10} color="#1677ff" opacity={0.2} />
+            
+            <div className="mb-6 relative w-24 h-24 sm:w-32 sm:h-32 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+              <Image src="/assets/Trophy_icon.svg" alt="Trophy" fill className="object-contain" />
+            </div>
+            <h3 className="mb-4 font-space-grotesk text-[clamp(4rem,8vw,6rem)] font-extrabold leading-none tracking-tight text-brand-gold">
+              ₹50,000+
+            </h3>
+            <p className="font-inter text-lg text-text-secondary md:text-[1.1rem]">
+              in prizes, gadgets, and merchandise
+            </p>
+          </motion.div>
+        </div>
 
         {/* Prize Category Grid */}
         <motion.div
-          variants={containerVariants}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-10%" }}
           className="mb-20 grid w-full grid-cols-1 gap-12 sm:grid-cols-3"
         >
-          <motion.div variants={itemVariants}>
-            <div className="flex h-full flex-col items-start rounded-2xl bg-soft-blue p-8 shadow-card border border-brand-blue/10 hover:shadow-card-hover transition-all duration-300">
-              <Headphones className="mb-6 h-8 w-8 text-brand-blue" />
+          <motion.div variants={{
+            hidden: { opacity: 0, y: 50, scale: 0.96 },
+            visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+          }}>
+            <div className="group flex h-full flex-col items-start rounded-2xl bg-soft-blue p-8 shadow-card border border-brand-blue/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
+              <Headphones className="mb-6 h-8 w-8 text-brand-blue transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" />
               <h4 className="mb-3 font-space-grotesk text-xl font-bold text-text-primary">
                 Premium Gadgets
               </h4>
-              <p className="font-inter text-sm leading-relaxed text-text-secondary">
+              <p className="font-inter text-sm leading-relaxed text-text-secondary mb-4">
                 Top performers in each pool win cutting-edge tech.
               </p>
+              {/* Product Photo Placeholder */}
+              <div className="relative w-full h-24 rounded-lg overflow-hidden mt-auto bg-gray-100 animate-pulse flex items-center justify-center">
+                <span className="text-gray-400 font-inter text-xs font-medium">Gadget Placeholder</span>
+              </div>
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants}>
-            <div className="flex h-full flex-col items-start rounded-2xl bg-soft-purple p-8 shadow-card border border-brand-purple/10 hover:shadow-card-hover transition-all duration-300">
-              <Shirt className="mb-6 h-8 w-8 text-brand-purple" />
+          <motion.div variants={{
+            hidden: { opacity: 0, y: 50, scale: 0.96 },
+            visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+          }}>
+            <div className="group flex h-full flex-col items-start rounded-2xl bg-soft-purple p-8 shadow-card border border-brand-purple/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
+              <Shirt className="mb-6 h-8 w-8 text-brand-purple transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
               <h4 className="mb-3 font-space-grotesk text-xl font-bold text-text-primary">
                 Udghosh Merch
               </h4>
               <p className="font-inter text-sm leading-relaxed text-text-secondary mb-4">
                 Exclusive Udghosh-branded hoodies, bags, and collectibles.
               </p>
-              <div className="relative w-full h-24 rounded-lg overflow-hidden mt-auto">
+              <div className="relative w-full h-24 rounded-lg overflow-hidden mt-auto group-hover:shadow-md transition-all duration-300">
                 <Image src="/assets/merch.jpg" alt="Udghosh Merch" fill className="object-cover" />
               </div>
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants}>
-            <div className="flex h-full flex-col items-start rounded-2xl bg-soft-orange p-8 shadow-card border border-brand-orange/10 hover:shadow-card-hover transition-all duration-300">
-              <Ticket className="mb-6 h-8 w-8 text-brand-orange-text" />
+          <motion.div variants={{
+            hidden: { opacity: 0, y: 50, scale: 0.96 },
+            visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+          }}>
+            <div className="group flex h-full flex-col items-start rounded-2xl bg-soft-orange p-8 shadow-card border border-brand-orange/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
+              <Ticket className="mb-6 h-8 w-8 text-brand-orange-text transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1" />
               <h4 className="mb-3 font-space-grotesk text-xl font-bold text-text-primary">
                 Udghosh Pronite Passes
               </h4>

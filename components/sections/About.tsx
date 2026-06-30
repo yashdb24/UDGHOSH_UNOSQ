@@ -21,17 +21,15 @@ export function About() {
   };
 
   return (
-    <section id="about" className="relative w-full overflow-hidden bg-white py-32 md:py-36">
+    <section id="about" className="relative w-full overflow-hidden bg-brand-orange/[0.02] py-32 md:py-36">
       <FloatingPaperElements variant="birds" count={4} />
       
-      {/* Background Graphic */}
-      <div className="absolute top-0 right-0 -z-10 opacity-5 pointer-events-none w-1/2 h-full max-w-2xl">
-        <Image src="/assets/about_us.svg" alt="Background" fill className="object-cover object-right" />
+      {/* Background Graphic Left (Sepia Doodles) */}
+      <div className="absolute top-0 left-0 -z-10 opacity-10 pointer-events-none w-1/2 h-full max-w-2xl mix-blend-multiply">
+        <Image src="/elements/3610929.jpg" alt="Background Left" fill className="object-cover object-left" />
       </div>
 
       <div className="mx-auto flex max-w-7xl flex-col gap-16 px-6 md:px-12 lg:flex-row lg:gap-24 relative z-10">
-        <DecorativeIcon icon="openBook" className="top-10 left-10" size={48} rotation={-15} color="#4229d5" opacity={0.15} />
-        <DecorativeIcon icon="pencil" className="bottom-20 left-1/2" size={40} rotation={25} color="#ff7c00" opacity={0.15} />
         {/* Left Column */}
         <div className="flex flex-1 flex-col justify-center">
           <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
@@ -76,10 +74,36 @@ export function About() {
             Learn about the phases
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
           </motion.a>
+
+          {/* Past Event Photo Placeholder */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-12 w-full max-w-md relative overflow-hidden rounded-2xl bg-gray-50 border-2 border-dashed border-gray-300 shadow-sm"
+          >
+            {/* IMAGE: Past UNOSQ event photo, students writing/competing, 600x400px */}
+            <div className="aspect-[3/2] w-full animate-pulse flex flex-col items-center justify-center gap-3 text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+              <span className="font-inter text-sm font-medium uppercase tracking-widest">Past Event Photo</span>
+            </div>
+          </motion.div>
         </div>
 
         {/* Right Column: Stat Cards */}
-        <div className="flex flex-1 items-center justify-center lg:justify-end">
+        <div className="flex flex-1 items-center justify-center lg:justify-end relative">
+          
+          {/* Background Graphic Right (Science Frame) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-60 pointer-events-none w-[120%] h-[120%] max-w-[700px]">
+            <Image src="/elements/science_background_website.png" alt="Background Right Frame" fill className="object-contain" />
+          </div>
+
+          {/* Backpack Accent */}
+          <div className="absolute -bottom-10 -left-16 z-20 w-48 h-48 pointer-events-none drop-shadow-[0_16px_24px_rgba(0,0,0,0.15)]">
+            <Image src="/elements/background-removed.png" alt="School Backpack" fill className="object-contain" />
+          </div>
+
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -87,13 +111,13 @@ export function About() {
             variants={{
               visible: { transition: { staggerChildren: 0.1 } },
             }}
-            className="grid w-full max-w-[540px] grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-6"
+            className="grid w-full max-w-[540px] grid-cols-2 gap-10 relative z-10"
           >
             {/* Card 1 */}
             <motion.div variants={staggerCardVariants}>
-              <div className="group flex flex-col items-start gap-6 p-8 rounded-2xl bg-soft-orange shadow-card border border-brand-orange/10 hover:shadow-card-hover transition-all duration-300">
+              <div className="group flex h-full flex-col items-start gap-6 p-8 rounded-2xl bg-soft-orange shadow-card border border-brand-orange/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
                 <Trophy className="h-8 w-8 text-brand-orange-text transition-transform duration-300 group-hover:scale-110" />
-                <div>
+                <div className="mt-auto">
                   <div className="font-space-grotesk text-[3.5rem] font-extrabold leading-none text-brand-orange-text">
                     <CountUp to={5000} suffix="+" />
                   </div>
@@ -104,9 +128,9 @@ export function About() {
 
             {/* Card 2 */}
             <motion.div variants={staggerCardVariants}>
-              <div className="group flex flex-col items-start gap-6 p-8 rounded-2xl bg-soft-blue shadow-card border border-brand-blue/10 hover:shadow-card-hover transition-all duration-300 lg:mt-8">
+              <div className="group flex h-full flex-col items-start gap-6 p-8 rounded-2xl bg-soft-blue shadow-card border border-brand-blue/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
                 <School className="h-8 w-8 text-brand-blue transition-transform duration-300 group-hover:scale-110" />
-                <div>
+                <div className="mt-auto">
                   <div className="font-space-grotesk text-[3.5rem] font-extrabold leading-none text-brand-blue">
                     <CountUp to={100} suffix="+" />
                   </div>
@@ -117,9 +141,9 @@ export function About() {
 
             {/* Card 3 */}
             <motion.div variants={staggerCardVariants}>
-              <div className="group flex flex-col items-start gap-6 p-8 rounded-2xl bg-soft-purple shadow-card border border-brand-purple/10 hover:shadow-card-hover transition-all duration-300">
+              <div className="group flex h-full flex-col items-start gap-6 p-8 rounded-2xl bg-soft-purple shadow-card border border-brand-purple/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
                 <Clock className="h-8 w-8 text-brand-purple transition-transform duration-300 group-hover:scale-110" />
-                <div>
+                <div className="mt-auto">
                   <div className="font-space-grotesk text-[3.5rem] font-extrabold leading-none text-brand-purple">
                     <CountUp to={5} suffix="+" />
                   </div>
@@ -130,9 +154,9 @@ export function About() {
 
             {/* Card 4 */}
             <motion.div variants={staggerCardVariants}>
-              <div className="group flex flex-col items-start gap-6 p-8 rounded-2xl bg-soft-gold shadow-card border border-brand-gold/10 hover:shadow-card-hover transition-all duration-300 lg:mt-8">
+              <div className="group flex h-full flex-col items-start gap-6 p-8 rounded-2xl bg-soft-gold shadow-card border border-brand-gold/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
                 <Users className="h-8 w-8 text-brand-gold transition-transform duration-300 group-hover:scale-110" />
-                <div>
+                <div className="mt-auto">
                   <div className="font-space-grotesk text-[3.5rem] font-extrabold leading-none text-brand-gold">
                     <CountUp to={25} suffix="+" />
                   </div>
@@ -143,6 +167,18 @@ export function About() {
           </motion.div>
         </div>
       </div>
+
+      {/* Gallery Strip Placeholder */}
+      <div className="mt-32 w-full overflow-hidden flex gap-4 px-4 pb-12 opacity-80">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="relative h-48 w-72 shrink-0 rounded-2xl bg-gray-100 animate-pulse overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-gray-400 font-inter text-xs font-medium uppercase tracking-widest">Gallery Image {i}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
       <TornEdge top={false} fillColor="#FFFFFF" />
     </section>
   );

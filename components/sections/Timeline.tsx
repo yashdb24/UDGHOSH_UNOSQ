@@ -72,8 +72,19 @@ export function Timeline() {
   }, [shouldReduceMotion]);
 
   return (
-    <section id="timeline" ref={containerRef} className="relative w-full bg-white py-32 md:py-36">
-      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12">
+    <section id="timeline" ref={containerRef} className="relative w-full overflow-hidden bg-brand-blue/[0.02] py-32 md:py-36">
+      {/* Tiled Background */}
+      <div 
+        className="absolute left-0 top-0 h-full w-full z-0 opacity-[0.15] pointer-events-none mix-blend-multiply" 
+        style={{ 
+          backgroundImage: "url('/elements/background-removed (5).png')", 
+          backgroundRepeat: "repeat",
+          backgroundSize: "600px",
+          backgroundPosition: "top center"
+        }} 
+      />
+
+      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12 relative z-10">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           04 / TIMELINE
         </div>
@@ -135,7 +146,7 @@ export function Timeline() {
                   >
                     <div
                       className={cn(
-                        "group relative flex flex-col overflow-hidden rounded-2xl border border-[#ECEAF5] bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover sm:p-8",
+                        "group relative flex flex-col overflow-hidden rounded-2xl border border-[#ECEAF5] bg-white p-6 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 sm:p-8",
                         item.title === "Felicitation at IIT Kanpur" && "border-brand-purple/20 bg-soft-purple"
                       )}
                     >

@@ -1,17 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { TEAM } from "@/lib/constants";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function Team() {
+  const [copied, setCopied] = useState<string | null>(null);
+
   return (
-    <section id="team" className="relative w-full bg-bg-secondary py-24 md:py-32">
+    <section id="team" className="relative w-full bg-brand-orange/[0.02] py-24 md:py-32">
       <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           07 / THE TEAM
@@ -28,11 +30,11 @@ export function Team() {
           {TEAM.map((member, i) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[#ECEAF5] bg-white shadow-card transition-shadow hover:shadow-card-hover"
+              className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[#ECEAF5] bg-white shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2"
             >
               <Image
                 src={member.image}
@@ -58,36 +60,59 @@ export function Team() {
 
         {/* Contact Block */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-3xl"
+          className="relative w-full max-w-3xl"
         >
+          {/* Decorative Frame */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-20 pointer-events-none w-[110%] h-[120%]">
+            <Image src="/elements/background-removed (3).png" alt="Decorative Frame" fill className="object-contain" />
+          </div>
+
           <div className="flex flex-col items-center p-12 text-center md:p-16 rounded-2xl bg-white shadow-card border border-[#ECEAF5]">
             <h3 className="mb-10 font-space-grotesk text-3xl font-semibold text-text-primary md:text-[2.5rem]">
               Get in Touch
             </h3>
 
             <div className="mb-12 flex flex-col gap-6 text-left">
-              <a
-                href="mailto:unosq.udghosh@gmail.com"
+              <button
+                onClick={async () => {
+                  await navigator.clipboard.writeText("unosq.udghosh@gmail.com");
+                  setCopied("email");
+                  setTimeout(() => setCopied(null), 2000);
+                }}
                 className="group flex items-center gap-4 transition-colors"
               >
-                <Mail className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
+                {copied === "email" ? (
+                  <Check className="h-[18px] w-[18px] shrink-0 text-brand-green" />
+                ) : (
+                  <Mail className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
+                )}
                 <span className="font-inter text-lg text-brand-blue group-hover:underline">
-                  unosq.udghosh@gmail.com
+                  {copied === "email" ? "Copied to clipboard!" : "unosq.udghosh@gmail.com"}
                 </span>
-              </a>
-              <a
-                href="tel:+918619757403"
+              </button>
+              
+              <button
+                onClick={async () => {
+                  await navigator.clipboard.writeText("+91 8619757403");
+                  setCopied("phone");
+                  setTimeout(() => setCopied(null), 2000);
+                }}
                 className="group flex items-center gap-4 transition-colors"
               >
-                <Phone className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
+                {copied === "phone" ? (
+                  <Check className="h-[18px] w-[18px] shrink-0 text-brand-green" />
+                ) : (
+                  <Phone className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
+                )}
                 <span className="font-inter text-lg text-text-secondary group-hover:text-text-primary">
-                  +91 8619757403
+                  {copied === "phone" ? "Copied to clipboard!" : "+91 8619757403"}
                 </span>
-              </a>
+              </button>
+              
               <div className="flex items-center gap-4">
                 <MapPin className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
                 <span className="font-inter text-lg text-text-secondary">

@@ -6,6 +6,7 @@ import { TextReveal } from "@/components/animations/TextReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { POOLS } from "@/lib/constants";
 import { FileText, Download } from "lucide-react";
+import Image from "next/image";
 
 export function SamplePapers() {
   const containerVariants: Variants = {
@@ -16,14 +17,25 @@ export function SamplePapers() {
     },
   };
 
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+    const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 50, scale: 0.96 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
-    <section id="resources" className="relative w-full bg-white py-24 md:py-32">
-      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12">
+    <section id="resources" className="relative w-full overflow-hidden bg-brand-purple/[0.02] py-24 md:py-32">
+      {/* Framing Background for Header */}
+      <div 
+        className="absolute inset-0 w-full h-full z-0 opacity-40 pointer-events-none mix-blend-multiply" 
+        style={{
+          backgroundImage: "url('/elements/3649627.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center top"
+        }}
+      />
+
+      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12 relative z-10">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           06 / RESOURCES
         </div>
@@ -44,7 +56,7 @@ export function SamplePapers() {
           {POOLS.map((pool) => (
             <motion.div key={pool.id} variants={itemVariants}>
               <div
-                className="flex flex-col p-8 rounded-2xl bg-white shadow-card border border-[#ECEAF5] hover:shadow-card-hover transition-all duration-300"
+                className="flex flex-col p-8 rounded-2xl bg-white shadow-card border border-[#ECEAF5] hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300"
                 style={{ borderTop: `4px solid ${pool.hex}` }}
               >
                 <div className="mb-6 flex items-center justify-between">

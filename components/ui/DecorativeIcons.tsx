@@ -175,7 +175,7 @@ export function DecorativeIcon({
       whileInView={{ opacity: opacity, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className={`absolute pointer-events-none ${className}`}
+      className={`absolute pointer-events-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.1)] ${className}`}
       style={{
         transform: `rotate(${rotation}deg)`,
       }}

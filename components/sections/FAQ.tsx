@@ -7,6 +7,7 @@ import { FAQS } from "@/lib/constants";
 import { Plus, X } from "lucide-react";
 import { accordionVariants } from "@/lib/animations";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -16,8 +17,17 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative w-full bg-white py-24 md:py-32">
-      <div className="mx-auto flex max-w-4xl flex-col items-center px-6 md:px-12">
+    <section id="faq" className="relative w-full overflow-hidden bg-brand-orange/[0.02] py-24 md:py-32">
+      
+      {/* Corner Accent Graphic */}
+      <div 
+        className="absolute bottom-0 right-0 w-[400px] h-[400px] z-0 opacity-10 pointer-events-none mix-blend-multiply"
+        style={{ WebkitMaskImage: "radial-gradient(circle at center, black 10%, transparent 60%)", maskImage: "radial-gradient(circle at center, black 10%, transparent 60%)" }}
+      >
+        <Image src="/elements/3681808.jpg" alt="FAQ Accent" fill className="object-cover object-[100%_100%]" />
+      </div>
+
+      <div className="mx-auto flex max-w-4xl flex-col items-center px-6 md:px-12 relative z-10">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           08 / FAQs
         </div>
@@ -44,14 +54,14 @@ export function FAQ() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="flex w-full items-center justify-between py-6 text-left px-4"
+                  className="flex w-full items-center justify-between py-6 text-left px-4 group"
                 >
-                  <span className="font-inter text-base font-semibold text-text-primary pr-8">
+                  <span className="font-inter text-base font-semibold text-text-primary pr-8 transition-colors duration-300 group-hover:text-brand-orange-text">
                     {faq.question}
                   </span>
                   <div
                     className={cn(
-                      "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#ECEAF5] bg-white transition-transform duration-300 shadow-sm",
+                      "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#ECEAF5] bg-white transition-all duration-300 shadow-sm",
                       isOpen ? "rotate-90 bg-soft-orange border-brand-orange/20" : ""
                     )}
                   >

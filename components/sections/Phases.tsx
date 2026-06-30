@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { TornEdge } from "@/components/ui/TornEdge";
 import { DecorativeIcon } from "@/components/ui/DecorativeIcons";
+import { FloatingPaperElements } from "@/components/ui/FloatingPaperElements";
 import Image from "next/image";
 
 const PhaseSpecRow = ({ label, value }: { label: string; value: string }) => (
@@ -23,6 +24,12 @@ export function Phases() {
     <section id="phases" className="relative w-full overflow-hidden bg-white py-32 md:py-36">
       <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12 relative z-10">
         
+        <div className="absolute top-0 left-0 w-full h-[600px] z-0 overflow-hidden pointer-events-none">
+          <Image src="/elements/4829.jpg" alt="Stadium sketch background" fill className="object-cover opacity-10 mix-blend-multiply" />
+        </div>
+        
+        <FloatingPaperElements variant="sports" count={3} />
+
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           03 / PHASES
         </div>
@@ -38,11 +45,11 @@ export function Phases() {
         <div className="relative flex w-full flex-col gap-8 lg:flex-row lg:gap-16">
           {/* Phase 1 Card */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative flex flex-1 flex-col overflow-hidden rounded-2xl border border-[#ECEAF5] bg-white shadow-card hover:shadow-card-hover transition-shadow duration-300"
+            className="group relative flex flex-1 flex-col overflow-hidden rounded-2xl border border-[#ECEAF5] bg-white shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300"
           >
             {/* Left Accent Stripe */}
             <div className="absolute bottom-0 left-0 top-0 w-[6px] bg-brand-blue" />
@@ -84,11 +91,11 @@ export function Phases() {
 
           {/* Phase 2 Card */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative flex flex-1 flex-col overflow-hidden rounded-2xl border border-[#ECEAF5] bg-white shadow-card hover:shadow-card-hover transition-shadow duration-300"
+            className="group relative flex flex-1 flex-col overflow-hidden rounded-2xl border border-[#ECEAF5] bg-white shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300"
           >
             {/* Left Accent Stripe */}
             <div className="absolute bottom-0 left-0 top-0 w-[6px] bg-brand-orange" />
