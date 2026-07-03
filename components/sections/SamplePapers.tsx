@@ -5,8 +5,19 @@ import { motion, Variants } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { POOLS } from "@/lib/constants";
-import { FileText, Download } from "lucide-react";
+import { CheckCircle2, Download, BookOpen, FileText } from "lucide-react";
 import Image from "next/image";
+import { FloatingPaperElements } from "@/components/ui/FloatingPaperElements";
+import dynamic from "next/dynamic";
+
+const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => m.Scene3D), { ssr: false });
+const PoolAccentScene = dynamic(() => import("@/components/three/PoolAccentScene").then((m) => m.PoolAccentScene), { ssr: false });
+const SHAPES: Record<string, "icosahedron" | "octahedron" | "torus" | "box"> = {
+  "little-champs": "icosahedron",
+  "super-nova": "octahedron",
+  "the-titans": "torus",
+  "elite-explorers": "box",
+};
 
 export function SamplePapers() {
   const containerVariants: Variants = {
@@ -35,6 +46,8 @@ export function SamplePapers() {
         }}
       />
 
+      <FloatingPaperElements variant="mixed" count={4} />
+
       <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12 relative z-10">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           06 / RESOURCES
@@ -60,7 +73,11 @@ export function SamplePapers() {
                 style={{ borderTop: `4px solid ${pool.hex}` }}
               >
                 <div className="mb-6 flex items-center justify-between">
-                  <FileText className="h-8 w-8" style={{ color: pool.hex }} />
+                  <div className="h-16 w-16 -ml-4">
+                    <Scene3D cameraPosition={[0, 0, 3]}>
+                      <PoolAccentScene color={pool.hex} shape={SHAPES[pool.id] || "icosahedron"} />
+                    </Scene3D>
+                  </div>
                   <div
                     className="rounded-full px-3 py-1 font-inter text-[10px] font-semibold uppercase tracking-widest"
                     style={{

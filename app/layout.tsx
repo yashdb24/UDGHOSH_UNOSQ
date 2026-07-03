@@ -4,6 +4,7 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import { PageLoader } from "@/components/PageLoader";
 import { Navigation } from "@/components/Navigation";
+import { PaperFlockOverlay } from "@/components/three/PaperFlockOverlay";
 
 const spaceGrotesk = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -40,6 +41,8 @@ export default function RootLayout({
     >
       <body>
         <PageLoader />
+        {/* Fixed, page-wide canvas: paper plane/crane/boat fly across as you scroll. */}
+        <PaperFlockOverlay />
         <LenisProvider>
           <Navigation />
           {children}

@@ -25,8 +25,8 @@ export function About() {
       <FloatingPaperElements variant="birds" count={4} />
       
       {/* Background Graphic Left (Sepia Doodles) */}
-      <div className="absolute top-0 left-0 -z-10 opacity-10 pointer-events-none w-1/2 h-full max-w-2xl mix-blend-multiply">
-        <Image src="/elements/3610929.jpg" alt="Background Left" fill className="object-cover object-left" />
+      <div className="absolute inset-0 -z-10 opacity-10 pointer-events-none mix-blend-multiply">
+        <Image src="/elements/3610929.jpg" alt="Background Left" fill className="object-cover" />
       </div>
 
       <div className="mx-auto flex max-w-7xl flex-col gap-16 px-6 md:px-12 lg:flex-row lg:gap-24 relative z-10">
@@ -95,7 +95,7 @@ export function About() {
         <div className="flex flex-1 items-center justify-center lg:justify-end relative">
           
           {/* Background Graphic Right (Science Frame) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-60 pointer-events-none w-[120%] h-[120%] max-w-[700px]">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-60 pointer-events-none w-[150%] h-[150%] max-w-[900px]">
             <Image src="/elements/science_background_website.png" alt="Background Right Frame" fill className="object-contain" />
           </div>
 

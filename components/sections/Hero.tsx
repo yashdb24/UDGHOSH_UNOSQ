@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -11,6 +12,10 @@ import { TornEdge } from "@/components/ui/TornEdge";
 import { FloatingPaperElements } from "@/components/ui/FloatingPaperElements";
 import { DecorativeIcon } from "@/components/ui/DecorativeIcons";
 import Image from "next/image";
+
+// Canvas needs the browser (WebGL context), so it's excluded from SSR.
+const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => m.Scene3D), { ssr: false });
+const HeroScene = dynamic(() => import("@/components/three/HeroScene").then((m) => m.HeroScene), { ssr: false });
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -26,17 +31,17 @@ export function Hero() {
   };
 
   return (
-    <section 
+    <section
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-bg-primary pt-20"
       onMouseMove={handleMouseMove}
     >
       <FloatingPaperElements variant="mixed" count={6} />
       {/* Main Content */}
       <div className="relative z-20 flex w-full max-w-7xl flex-col-reverse items-center justify-between px-6 pt-12 md:flex-row md:items-center lg:px-12">
-        
+
         {/* Left Column (Text & CTAs) */}
         <div className="flex w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
-          
+
           {/* Row 1: Badge */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -150,11 +155,13 @@ export function Hero() {
           />
 
           <div className="relative flex aspect-square w-full max-w-[450px] items-center justify-center">
-            {/* Background Circle Frame */}
-            <div className="absolute inset-0 -z-10 flex items-center justify-center">
-              <Image src="/assets/banner_bg_circle.webp" alt="Background Circle" fill className="object-contain opacity-70 animate-[spin_60s_linear_infinite]" />
+            {/* 3D Scene — sits behind the photo, peeking out around the edges for depth */}
+            <div className="absolute inset-[-15%] -z-10 pointer-events-none">
+              <Scene3D cameraPosition={[0, 0, 4.5]}>
+                <HeroScene />
+              </Scene3D>
             </div>
-            
+
             {/* Visual (Circular Mask) */}
             <div className="relative z-10 aspect-square w-[75%] overflow-hidden rounded-full border-4 border-white shadow-xl bg-white p-4">
               <Image src="/assets/hero.svg" alt="UNOSQ Student" fill className="object-contain" />

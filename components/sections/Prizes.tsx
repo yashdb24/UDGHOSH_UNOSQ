@@ -1,13 +1,18 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import { motion, Variants } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Headphones, Shirt, Ticket } from "lucide-react";
 import { TornEdge } from "@/components/ui/TornEdge";
 import { DecorativeIcon } from "@/components/ui/DecorativeIcons";
+import { FloatingPaperElements } from "@/components/ui/FloatingPaperElements";
 import Image from "next/image";
+
+const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => m.Scene3D), { ssr: false });
+const PrizeTrophyScene = dynamic(() => import("@/components/three/PrizeTrophyScene").then((m) => m.PrizeTrophyScene), { ssr: false });
 
 export function Prizes() {
   const containerVariants: Variants = {
@@ -25,7 +30,8 @@ export function Prizes() {
 
   return (
     <section id="prizes" className="relative w-full bg-brand-gold/[0.02] py-32 md:py-36">
-      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12">
+      <FloatingPaperElements variant="mixed" count={4} />
+      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12 relative z-10">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           05 / REWARDS
         </div>
@@ -40,11 +46,6 @@ export function Prizes() {
 
         {/* Top Prize Showcase */}
         <div className="relative w-full max-w-3xl mb-16">
-          {/* Decorative Frame */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-30 pointer-events-none w-[115%] h-[125%]">
-            <Image src="/elements/background-removed (4).png" alt="Decorative Frame" fill className="object-contain" />
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -56,9 +57,12 @@ export function Prizes() {
             <DecorativeIcon icon="medal" className="absolute bottom-10 right-10 transition-transform duration-300 group-hover:scale-110" size={40} rotation={20} color="#ff7c00" opacity={0.3} />
             <DecorativeIcon icon="ribbon" className="absolute top-16 right-16 transition-transform duration-300 group-hover:scale-110" size={32} rotation={-10} color="#4229d5" opacity={0.2} />
             <DecorativeIcon icon="podium" className="absolute bottom-12 left-16 transition-transform duration-300 group-hover:scale-110" size={40} rotation={10} color="#1677ff" opacity={0.2} />
-            
-            <div className="mb-6 relative w-24 h-24 sm:w-32 sm:h-32 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-              <Image src="/assets/Trophy_icon.svg" alt="Trophy" fill className="object-contain" />
+
+            {/* 3D Trophy replaces the flat SVG icon */}
+            <div className="mb-6 relative w-32 h-32 sm:w-40 sm:h-40 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+              <Scene3D cameraPosition={[0, 0, 3.6]}>
+                <PrizeTrophyScene />
+              </Scene3D>
             </div>
             <h3 className="mb-4 font-space-grotesk text-[clamp(4rem,8vw,6rem)] font-extrabold leading-none tracking-tight text-brand-gold">
               ₹50,000+

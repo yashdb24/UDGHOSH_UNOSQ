@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { DecorativeIcon } from "@/components/ui/DecorativeIcons";
+import { FloatingPaperElements } from "@/components/ui/FloatingPaperElements";
 import { motion } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -14,7 +16,8 @@ export function Team() {
 
   return (
     <section id="team" className="relative w-full bg-brand-orange/[0.02] py-24 md:py-32">
-      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12">
+      <FloatingPaperElements variant="mixed" count={4} />
+      <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12 relative z-10">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           07 / THE TEAM
         </div>

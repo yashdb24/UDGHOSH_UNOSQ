@@ -17,10 +17,11 @@ interface TextRevealProps {
 export function TextReveal({
   text,
   className,
-  as: Component = "h2",
+  as = "h2",
   gradientWords = [],
   gradientClass = "bg-gradient-to-br from-brand-orange via-brand-violet to-brand-blue bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]",
 }: TextRevealProps) {
+  const Component = as as any;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
   const shouldReduceMotion = useReducedMotion();

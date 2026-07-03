@@ -22,11 +22,11 @@ const PhaseSpecRow = ({ label, value }: { label: string; value: string }) => (
 export function Phases() {
   return (
     <section id="phases" className="relative w-full overflow-hidden bg-white py-32 md:py-36">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <Image src="/elements/4829.jpg" alt="Stadium sketch background" fill className="object-cover opacity-10 mix-blend-multiply" />
+      </div>
+
       <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12 relative z-10">
-        
-        <div className="absolute top-0 left-0 w-full h-[600px] z-0 overflow-hidden pointer-events-none">
-          <Image src="/elements/4829.jpg" alt="Stadium sketch background" fill className="object-cover opacity-10 mix-blend-multiply" />
-        </div>
         
         <FloatingPaperElements variant="sports" count={3} />
 

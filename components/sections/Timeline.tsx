@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,7 +10,10 @@ import { TextReveal } from "@/components/animations/TextReveal";
 import { cn } from "@/lib/utils";
 import { Trophy } from "lucide-react";
 import { DecorativeIcon } from "@/components/ui/DecorativeIcons";
+import { FloatingPaperElements } from "@/components/ui/FloatingPaperElements";
 
+const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => m.Scene3D), { ssr: false });
+const TimelineNodeScene = dynamic(() => import("@/components/three/TimelineNodeScene").then((m) => m.TimelineNodeScene), { ssr: false });
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -84,6 +88,8 @@ export function Timeline() {
         }} 
       />
 
+      <FloatingPaperElements variant="mixed" count={4} />
+
       <div className="mx-auto flex max-w-7xl flex-col items-center px-6 md:px-12 relative z-10">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           04 / TIMELINE
@@ -125,17 +131,17 @@ export function Timeline() {
                     isLeft ? "md:justify-start" : "md:justify-end"
                   )}
                 >
-                  {/* The dot on the line */}
+                  {/* 3D Node on the line */}
                   <div
                     className={cn(
-                      "absolute left-6 top-1/2 z-10 h-4 w-4 -translate-x-[7px] -translate-y-1/2 rounded-full border-[3px] border-white md:left-1/2 md:-translate-x-[7px]",
+                      "absolute left-6 top-1/2 z-10 h-10 w-10 -translate-x-[19px] -translate-y-1/2 md:left-1/2 md:-translate-x-[19px]",
                       shouldReduceMotion && "opacity-100"
                     )}
-                    style={{
-                      backgroundColor: item.color,
-                      boxShadow: `0 0 12px ${item.color}4D`,
-                    }}
-                  />
+                  >
+                    <Scene3D cameraPosition={[0, 0, 3]}>
+                      <TimelineNodeScene color={item.color} />
+                    </Scene3D>
+                  </div>
 
                   {/* Card Content */}
                   <div

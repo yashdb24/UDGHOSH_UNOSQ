@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
+import { DecorativeIcon } from "@/components/ui/DecorativeIcons";
+import { FloatingPaperElements } from "@/components/ui/FloatingPaperElements";
 import { FAQS } from "@/lib/constants";
 import { Plus, X } from "lucide-react";
 import { accordionVariants } from "@/lib/animations";
@@ -26,7 +28,7 @@ export function FAQ() {
       >
         <Image src="/elements/3681808.jpg" alt="FAQ Accent" fill className="object-cover object-[100%_100%]" />
       </div>
-
+      <FloatingPaperElements variant="clouds" count={4} />
       <div className="mx-auto flex max-w-4xl flex-col items-center px-6 md:px-12 relative z-10">
         <div className="mb-4 font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
           08 / FAQs
