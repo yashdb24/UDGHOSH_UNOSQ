@@ -35,6 +35,13 @@ export function Hero() {
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-bg-primary pt-20"
       onMouseMove={handleMouseMove}
     >
+      {/* FULL SCREEN 3D SCENE */}
+      <div className="absolute inset-0 z-30 pointer-events-none">
+        <Scene3D cameraPosition={[0, 0, 8]}>
+          <HeroScene />
+        </Scene3D>
+      </div>
+
       <FloatingPaperElements variant="mixed" count={6} />
       {/* Main Content */}
       <div className="relative z-20 flex w-full max-w-7xl flex-col-reverse items-center justify-between px-6 pt-12 md:flex-row md:items-center lg:px-12">
@@ -155,13 +162,6 @@ export function Hero() {
           />
 
           <div className="relative flex aspect-square w-full max-w-[450px] items-center justify-center">
-            {/* 3D Scene — sits behind the photo, peeking out around the edges for depth */}
-            <div className="absolute inset-[-15%] -z-10 pointer-events-none">
-              <Scene3D cameraPosition={[0, 0, 4.5]}>
-                <HeroScene />
-              </Scene3D>
-            </div>
-
             {/* Visual (Circular Mask) */}
             <div className="relative z-10 aspect-square w-[75%] overflow-hidden rounded-full border-4 border-white shadow-xl bg-white p-4">
               <Image src="/assets/hero.svg" alt="UNOSQ Student" fill className="object-contain" />

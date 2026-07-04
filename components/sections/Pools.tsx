@@ -88,10 +88,6 @@ function PoolCard({ pool, index }: { pool: typeof POOLS[0]; index: number }) {
             </div>
           </div>
 
-          {/* Thumbnail Placeholder */}
-          <div className="relative mb-6 h-28 w-full rounded-xl overflow-hidden bg-gray-100 animate-pulse flex items-center justify-center">
-            <span className="text-gray-400 font-inter text-[10px] font-medium uppercase tracking-widest">Pool Photo</span>
-          </div>
 
           <h3 className="mb-3 font-space-grotesk text-2xl font-bold text-text-primary">
             {pool.name}

@@ -59,7 +59,7 @@ export function Prizes() {
             <DecorativeIcon icon="podium" className="absolute bottom-12 left-16 transition-transform duration-300 group-hover:scale-110" size={40} rotation={10} color="#1677ff" opacity={0.2} />
 
             {/* 3D Trophy replaces the flat SVG icon */}
-            <div className="mb-6 relative w-32 h-32 sm:w-40 sm:h-40 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+            <div className="mb-6 relative w-80 h-80 sm:w-96 sm:h-96 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
               <Scene3D cameraPosition={[0, 0, 3.6]}>
                 <PrizeTrophyScene />
               </Scene3D>

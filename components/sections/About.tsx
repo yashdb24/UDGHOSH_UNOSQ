@@ -75,20 +75,7 @@ export function About() {
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
           </motion.a>
 
-          {/* Past Event Photo Placeholder */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-12 w-full max-w-md relative overflow-hidden rounded-2xl bg-gray-50 border-2 border-dashed border-gray-300 shadow-sm"
-          >
-            {/* IMAGE: Past UNOSQ event photo, students writing/competing, 600x400px */}
-            <div className="aspect-[3/2] w-full animate-pulse flex flex-col items-center justify-center gap-3 text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-              <span className="font-inter text-sm font-medium uppercase tracking-widest">Past Event Photo</span>
-            </div>
-          </motion.div>
+
         </div>
 
         {/* Right Column: Stat Cards */}
@@ -168,13 +155,11 @@ export function About() {
         </div>
       </div>
 
-      {/* Gallery Strip Placeholder */}
-      <div className="mt-32 w-full overflow-hidden flex gap-4 px-4 pb-12 opacity-80">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <div key={i} className="relative h-48 w-72 shrink-0 rounded-2xl bg-gray-100 animate-pulse overflow-hidden">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-gray-400 font-inter text-xs font-medium uppercase tracking-widest">Gallery Image {i}</span>
-            </div>
+      {/* Gallery Strip */}
+      <div className="mt-32 w-full overflow-hidden flex gap-4 px-4 pb-12">
+        {["galleryImage1", "GalleryImage2", "GalleryImage3", "GalleryImage4", "GalleryImage5"].map((img, i) => (
+          <div key={i} className="relative h-48 w-72 shrink-0 rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300 shadow-md">
+            <Image src={`/assets/gallery/${img}.webp`} alt={`Gallery Image ${i + 1}`} fill className="object-cover" />
           </div>
         ))}
       </div>

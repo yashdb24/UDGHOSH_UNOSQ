@@ -80,26 +80,26 @@ export function HeroPaperScene() {
     tl.fromTo(
       crumpledRef.current.scale,
       { x: 0, y: 0, z: 0 },
-      { x: 1, y: 1, z: 1, duration: 0.55, ease: "back.out(2)" }
+      { x: 1, y: 1, z: 1, duration: 0.65, ease: "back.out(2)" }
     ).to(
       crumpledRef.current.rotation,
-      { x: "+=8", y: "+=10", duration: 1.1, ease: "power1.inOut" },
+      { x: "+=8", y: "+=10", duration: 0.9, ease: "power1.inOut" },
       "<"
     );
 
     // 2. It "pops" open into the paper airplane, with a burst of scraps.
-    tl.add(() => setShowScraps(true), "+=0.15")
-      .to(crumpledRef.current.scale, { x: 0, y: 0, z: 0, duration: 0.25, ease: "power2.in" }, "<")
+    tl.add(() => setShowScraps(true), "-=0.15")
+      .to(crumpledRef.current.scale, { x: 0, y: 0, z: 0, duration: 0.15, ease: "power2.in" }, "<")
       .fromTo(
         planeRef.current.scale,
         { x: 0, y: 0, z: 0 },
-        { x: 1, y: 1, z: 1, duration: 0.6, ease: "back.out(2.4)" },
-        "<0.05"
+        { x: 1, y: 1, z: 1, duration: 0.4, ease: "back.out(2.4)" },
+        "<-0.05"
       )
       .fromTo(
         planeRef.current.rotation,
         { x: 0.4, y: -1.2, z: 0.3 },
-        { x: 0, y: 0, z: 0, duration: 0.8, ease: "power3.out" },
+        { x: 0.35, y: -0.6, z: 0.15, duration: 0.5, ease: "power3.out" },
         "<"
       );
 
@@ -110,7 +110,7 @@ export function HeroPaperScene() {
 
   useFrame((_, delta) => {
     if (reduced || !idleGroupRef.current) return;
-    idleGroupRef.current.rotation.y += delta * 0.18;
+    idleGroupRef.current.rotation.y -= delta * 0.18;
     idleGroupRef.current.rotation.x = THREE.MathUtils.lerp(
       idleGroupRef.current.rotation.x,
       pointer.y * 0.3,
@@ -131,10 +131,12 @@ export function HeroPaperScene() {
         floatIntensity={idle ? 0.9 : 0}
       >
         <group ref={crumpledRef} scale={0}>
-          <PaperModel url={CRUMPLED_URL} color="#F5F0E6" scale={1.1} />
+          <PaperModel url={CRUMPLED_URL} color="#F5F0E6" scale={3.5} textureUrl="/models/paper-craft/crumpled-texture.png" />
         </group>
         <group ref={planeRef} scale={0}>
-          <PaperModel url={PLANE_URL} color="#FFFFFF" scale={1.4} />
+          <group rotation={[0, Math.PI, 0]}>
+            <PaperModel url={PLANE_URL} color="#FFFFFF" scale={5.0} />
+          </group>
         </group>
       </Float>
       {showScraps &&

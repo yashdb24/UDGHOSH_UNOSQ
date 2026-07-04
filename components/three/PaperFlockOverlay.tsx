@@ -16,56 +16,60 @@ interface FlockPieceConfig {
   /** Portion of *whole-page* scroll progress (0-1) during which this piece is in flight. */
   range: [number, number];
   spinSpeed: number;
+  rotationOffset?: [number, number, number];
+  textureUrl?: string;
 }
 
 const PIECES: FlockPieceConfig[] = [
   {
     url: "/models/paper-craft/paper-airplane.glb",
-    scale: 0.55,
+    scale: 3.6,
     range: [0, 0.28],
-    spinSpeed: 0.6,
+    spinSpeed: -0.6,
     points: [
-      [-1.35, 0.75, -1],
-      [-0.55, 0.2, -0.5],
-      [0.5, -0.35, 0],
-      [1.4, -1.05, 0.5],
+      [-1.35, 0.4, -1],
+      [-0.55, 0.0, -0.5],
+      [0.5, -0.5, 0],
+      [1.4, -1.1, 0.5],
     ],
   },
   {
     url: "/models/paper-craft/origami-crane.glb",
-    scale: 0.5,
+    scale: 4.4,
     range: [0.24, 0.55],
     spinSpeed: 0.35,
+    rotationOffset: [Math.PI, 0, 0], // Flip right-side up
     points: [
-      [1.35, 0.85, -1],
-      [0.55, 0.25, -0.3],
-      [-0.45, -0.25, 0.2],
-      [-1.4, -0.9, 0.6],
+      [1.35, 0.45, -1],
+      [0.55, 0.0, -0.3],
+      [-0.45, -0.5, 0.2],
+      [-1.4, -1.1, 0.6],
     ],
   },
   {
     url: "/models/paper-craft/paper-boat.glb",
-    scale: 0.5,
+    scale: 19.2,
     range: [0.5, 0.8],
     spinSpeed: 0.2,
     points: [
-      [-1.4, 0.95, -0.8],
-      [-0.5, 0.3, -0.2],
-      [0.5, -0.3, 0.3],
-      [1.4, -1, 0.7],
+      [-1.4, 0.5, -0.8],
+      [-0.5, 0.0, -0.2],
+      [0.5, -0.6, 0.3],
+      [1.4, -1.2, 0.7],
     ],
   },
   {
     url: "/models/paper-craft/crumpled-paper.glb",
     color: "#F5F0E6",
-    scale: 0.4,
+    scale: 2.7,
     range: [0.72, 1],
     spinSpeed: 0.9,
+    textureUrl: "/models/paper-craft/crumpled-texture.png",
     points: [
-      [1.35, 0.95, -1],
-      [0.45, 0.25, -0.4],
-      [-0.5, -0.35, 0.1],
-      [-1.35, -1, 0.6],
+      [1.35, 0.45, -1],
+      [0.45, 0.0, -0.4],
+      [-0.5, -0.6, 0.1],
+      [-1.35, -1.2, 0.6],
     ],
   },
 ];
@@ -106,13 +110,15 @@ function FlockPiece({
     );
 
     const t = state.clock.getElapsedTime();
-    ref.current.rotation.z = Math.atan2(tangent.y, tangent.x) + Math.sin(t * 1.5) * 0.15;
-    ref.current.rotation.y += config.spinSpeed * 0.01;
+    ref.current.rotation.z = Math.atan2(tangent.y, tangent.x) + Math.sin(t * 1.5) * 0.15 + (config.rotationOffset?.[2] || 0);
+    // Use absolute time for spin to avoid frame-rate dependency, and apply static offset correctly.
+    ref.current.rotation.y = (t * config.spinSpeed) + (config.rotationOffset?.[1] || 0);
+    ref.current.rotation.x = config.rotationOffset?.[0] || 0;
   });
 
   return (
     <group ref={ref} visible={false}>
-      <PaperModel url={config.url} color={config.color} scale={config.scale} />
+      <PaperModel url={config.url} color={config.color} scale={config.scale} textureUrl={config.textureUrl} />
     </group>
   );
 }
@@ -138,8 +144,8 @@ export function PaperFlockOverlay() {
         camera={{ position: [0, 0, 5], fov: 50 }}
         style={{ background: "transparent" }}
       >
-        <ambientLight intensity={0.9} />
-        <directionalLight position={[3, 4, 5]} intensity={1.1} color="#ffffff" />
+        <ambientLight intensity={1.8} />
+        <directionalLight position={[3, 4, 5]} intensity={2.5} color="#ffffff" />
         <Suspense fallback={null}>
           {PIECES.map((piece, i) => (
             <FlockPiece key={i} config={piece} progress={progress} />
