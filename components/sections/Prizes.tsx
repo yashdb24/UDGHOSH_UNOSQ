@@ -155,7 +155,7 @@ export function Prizes() {
             ].map((perk, i) => (
               <div
                 key={i}
-                className="rounded-full border border-[#ECEAF5] bg-white px-5 py-2.5 font-inter text-[13.6px] font-medium text-text-muted transition-all duration-300 hover:border-brand-orange hover:bg-soft-orange hover:text-brand-orange-text shadow-sm"
+                className="rounded-full border border-brand-purple/20 bg-soft-purple px-5 py-2.5 font-inter text-[13.6px] font-semibold text-text-primary transition-all duration-300 hover:border-brand-orange hover:bg-soft-orange hover:text-brand-orange-text shadow-sm"
               >
                 {perk}
               </div>

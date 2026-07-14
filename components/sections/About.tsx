@@ -59,7 +59,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              &apos;Knowledge expands when shared&apos; and with this very spirit, UNOSQ has been taking its course towards a larger audience every year, fostering young school minds. Having witnessed overwhelming participation for UNOSQ &apos;23 with around 5,000+ registrations, and for UNOSQ &apos;24 with around 10,000+ registrations from across India, this year, we aim to surpass our legacy. through specially curated seminars, workshops, and exclusive Pronite passes.
+              &apos;Knowledge expands when shared&apos; and with this very spirit, UNOSQ has been taking its course towards a larger audience every year, fostering young school minds. Having witnessed overwhelming participation with 5000+ students in udghosh 25 from across India, this year, we aim to surpass our legacy through specially curated seminars, workshops, and exclusive Pronite passes.
             </motion.p>
           </div>
 

@@ -80,7 +80,7 @@ export const TIMELINE = [
     color: "#F59E0B", // gold
   },
   {
-    date: "LATE SEP 2026",
+    date: "OCTOBER 2026",
     title: "Felicitation at IIT Kanpur",
     description: "Grand finale and prize distribution at the IIT Kanpur campus.",
     status: "UPCOMING",

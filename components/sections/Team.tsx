@@ -98,23 +98,59 @@ export function Team() {
                 </span>
               </button>
               
-              <button
-                onClick={async () => {
-                  await navigator.clipboard.writeText("+91 8619757403");
-                  setCopied("phone");
-                  setTimeout(() => setCopied(null), 2000);
-                }}
-                className="group flex items-center gap-4 transition-colors"
-              >
-                {copied === "phone" ? (
-                  <Check className="h-[18px] w-[18px] shrink-0 text-brand-green" />
-                ) : (
-                  <Phone className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
-                )}
-                <span className="font-inter text-lg text-text-secondary group-hover:text-text-primary">
-                  {copied === "phone" ? "Copied to clipboard!" : "+91 8619757403"}
-                </span>
-              </button>
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={async () => {
+                    await navigator.clipboard.writeText("+91 7377093140");
+                    setCopied("phone1");
+                    setTimeout(() => setCopied(null), 2000);
+                  }}
+                  className="group flex items-center gap-4 transition-colors"
+                >
+                  {copied === "phone1" ? (
+                    <Check className="h-[18px] w-[18px] shrink-0 text-brand-green" />
+                  ) : (
+                    <Phone className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
+                  )}
+                  <span className="font-inter text-lg text-text-secondary group-hover:text-text-primary">
+                    {copied === "phone1" ? "Copied to clipboard!" : "+91 7377093140"}
+                  </span>
+                </button>
+                <button
+                  onClick={async () => {
+                    await navigator.clipboard.writeText("+91 6395485144");
+                    setCopied("phone2");
+                    setTimeout(() => setCopied(null), 2000);
+                  }}
+                  className="group flex items-center gap-4 transition-colors"
+                >
+                  {copied === "phone2" ? (
+                    <Check className="h-[18px] w-[18px] shrink-0 text-brand-green" />
+                  ) : (
+                    <Phone className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
+                  )}
+                  <span className="font-inter text-lg text-text-secondary group-hover:text-text-primary">
+                    {copied === "phone2" ? "Copied to clipboard!" : "+91 6395485144"}
+                  </span>
+                </button>
+                <button
+                  onClick={async () => {
+                    await navigator.clipboard.writeText("+91 8177001974");
+                    setCopied("phone3");
+                    setTimeout(() => setCopied(null), 2000);
+                  }}
+                  className="group flex items-center gap-4 transition-colors"
+                >
+                  {copied === "phone3" ? (
+                    <Check className="h-[18px] w-[18px] shrink-0 text-brand-green" />
+                  ) : (
+                    <Phone className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />
+                  )}
+                  <span className="font-inter text-lg text-text-secondary group-hover:text-text-primary">
+                    {copied === "phone3" ? "Copied to clipboard!" : "+91 8177001974"}
+                  </span>
+                </button>
+              </div>
               
               <div className="flex items-center gap-4">
                 <MapPin className="h-[18px] w-[18px] shrink-0 text-brand-orange-text" />

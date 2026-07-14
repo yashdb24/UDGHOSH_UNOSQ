@@ -72,7 +72,7 @@ export function Hero() {
             <TextReveal
               as="h1"
               text="UNOSQ &apos;26"
-              className="font-space-grotesk text-[clamp(4.5rem,8vw,8rem)] font-extrabold leading-[0.9] tracking-[-0.04em] text-text-primary"
+              className="font-space-grotesk text-[clamp(4.5rem,8vw,8rem)] font-extrabold leading-[0.9] tracking-[-0.04em] text-text-primary whitespace-nowrap"
             />
             <TextReveal
               as="h1"
@@ -108,12 +108,16 @@ export function Hero() {
             >
               Register Now
             </a>
-            <a
-              href="#resources"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.querySelector('#resources');
+                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+              }}
               className="rounded-full border-[1.5px] border-[#ECEAF5] bg-white px-8 py-3.5 font-inter text-base font-semibold text-text-primary transition-all duration-300 hover:border-brand-orange hover:text-brand-orange-text shadow-sm"
             >
               View Sample Papers
-            </a>
+            </button>
           </motion.div>
 
           {/* Row 5: Stat Strip */}

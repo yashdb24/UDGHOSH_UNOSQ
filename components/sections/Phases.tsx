@@ -68,6 +68,7 @@ export function Phases() {
                 <PhaseSpecRow label="Duration" value="90 Minutes" />
                 <PhaseSpecRow label="Format" value="Objective MCQ" />
                 <PhaseSpecRow label="Syllabus" value="Logical Reasoning, Verbal Ability, Quantitative Aptitude, Sports Trivia" />
+                <PhaseSpecRow label="Special" value="Exclusive Talks & Exhibitions" />
                 <PhaseSpecRow label="Qualification" value="Top 100 per Pool" />
               </div>
 

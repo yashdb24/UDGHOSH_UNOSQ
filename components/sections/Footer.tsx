@@ -90,8 +90,14 @@ export function Footer() {
               <a href="mailto:unosq.udghosh@gmail.com" className="transition-colors hover:text-brand-orange-text">
                 unosq.udghosh@gmail.com
               </a>
-              <a href="tel:+918619757403" className="transition-colors hover:text-text-primary">
-                +91 8619757403
+              <a href="tel:+917377093140" className="transition-colors hover:text-text-primary">
+                +91 7377093140
+              </a>
+              <a href="tel:+916395485144" className="transition-colors hover:text-text-primary">
+                +91 6395485144
+              </a>
+              <a href="tel:+918177001974" className="transition-colors hover:text-text-primary">
+                +91 8177001974
               </a>
               <span>IIT Kanpur, UP 208016</span>
             </div>

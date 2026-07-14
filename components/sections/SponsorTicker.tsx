@@ -25,14 +25,15 @@ export function SponsorTicker() {
         <div className="flex animate-[marquee_30s_linear_infinite] items-center min-w-max hover:[animation-play-state:paused]">
           {/* Double the list for seamless looping (x4 total since we translate -50%) */}
           {[...SPONSORS, ...SPONSORS, ...SPONSORS, ...SPONSORS].map((sponsor, idx) => (
-            <div key={idx} className="group mx-6 md:mx-8 flex w-32 md:w-40 shrink-0 items-center justify-center">
+            <div key={idx} className="group mx-6 md:mx-8 flex w-auto shrink-0 items-center justify-center gap-4">
               <Image
                 src={sponsor.src}
                 alt={sponsor.name}
                 width={120}
                 height={40}
-                className="object-contain h-[32px] md:h-[40px] w-full filter grayscale-[0.8] opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                className="object-contain h-[32px] md:h-[40px] w-auto filter grayscale-[0.8] opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
               />
+              <span className="font-space-grotesk text-xl font-bold text-text-primary tracking-wider">{sponsor.name}</span>
             </div>
           ))}
         </div>

@@ -42,7 +42,7 @@ const FAQ_ITEMS: AccordionItem[] = [
   {
     id: "medium",
     title: "In which medium will the exam be conducted?",
-    content: "English and Hindi.",
+    content: "English.",
   },
   {
     id: "pools",
