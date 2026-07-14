@@ -61,12 +61,19 @@ export function Footer() {
             <h4 className="mb-6 font-space-grotesk text-lg font-bold text-text-primary">Quick Links</h4>
             <nav className="flex flex-col gap-4">
               {["About", "Phases", "Timeline", "Sample Papers", "FAQs"].map((link) => {
-                const href = link === "Sample Papers" ? "#resources" : `#${link.toLowerCase().replace(" ", "")}`;
+                const href = link === "Sample Papers" ? "/#resources" : link === "FAQs" ? "/faq" : `/#${link.toLowerCase().replace(" ", "")}`;
                 return (
                   <a
                     key={link}
                     href={href}
-                    onClick={(e) => scrollTo(e, href)}
+                    onClick={(e) => {
+                      if (href.startsWith("/#")) {
+                        // Only use smooth scroll if on the home page or let Next.js handle it
+                        if (window.location.pathname === "/") {
+                          scrollTo(e, href.replace("/", ""));
+                        }
+                      }
+                    }}
                     className="font-inter text-[14px] text-text-secondary transition-colors hover:text-brand-orange-text"
                   >
                     {link}

@@ -142,7 +142,7 @@ export function PaperFlockOverlay() {
         dpr={[1, 1.5]}
         gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
         camera={{ position: [0, 0, 5], fov: 50 }}
-        style={{ background: "transparent" }}
+        style={{ background: "transparent", pointerEvents: "none" }}
       >
         <ambientLight intensity={1.8} />
         <directionalLight position={[3, 4, 5]} intensity={2.5} color="#ffffff" />

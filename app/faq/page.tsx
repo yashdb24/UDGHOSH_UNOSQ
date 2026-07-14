@@ -54,7 +54,7 @@ const FAQ_ITEMS: AccordionItem[] = [
           <li>Pool LITTLE CHAMPS - Class 5-6</li>
           <li>Pool SUPER NOVA - Class 7-8</li>
           <li>Pool THE TITANS - Class 9-10</li>
-          <li>Pool ELITE EXPLORERS - Class 11-12</li>
+          <li>Pool ELITE EXPLORER - Class 11-12</li>
         </ul>
       </div>
     ),

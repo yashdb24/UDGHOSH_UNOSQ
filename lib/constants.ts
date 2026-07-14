@@ -32,9 +32,9 @@ export const POOLS = [
     paperLink: "https://drive.google.com/uc?export=download&id=13TLSFRkANqOVIiYN2gE79NBko7aZ47RY",
   },
   {
-    id: "elite-explorers",
+    id: "elite-explorer",
     number: "04",
-    name: "Elite Explorers",
+    name: "Elite Explorer",
     badge: "Classes 11–12",
     description: "The sharpest quizzers in the country. Built for those who eat textbooks for breakfast.",
     accentColor: "brand-gold",
@@ -45,42 +45,42 @@ export const POOLS = [
 
 export const TIMELINE = [
   {
-    date: "10 JUL 2025",
-    title: "Registrations Open",
+    date: "10 JUL - 15 AUG 2026",
+    title: "Registration",
     description: "Doors open for all Class 5–12 students across India.",
     status: "COMPLETED",
     color: "#10B981", // green
   },
   {
-    date: "3 SEP 2025",
-    title: "Phase 1 Quiz",
+    date: "30 AUG 2026",
+    title: "Phase 1 Exam",
     description: "National-level online MCQ round for all registered students.",
     status: "UPCOMING",
     color: "#3B82F6", // blue
   },
   {
-    date: "7 SEP 2025",
+    date: "04 SEP 2026",
     title: "Phase 1 Results",
     description: "Top 100 students per pool advance to Phase 2.",
     status: "UPCOMING",
     color: "#3B82F6", // blue
   },
   {
-    date: "10 SEP 2025",
-    title: "Phase 2 Finals",
+    date: "06 SEP 2026",
+    title: "Phase 2 Exam",
     description: "Advanced Challenge Round for the top qualifiers.",
     status: "UPCOMING",
     color: "#FF6B00", // orange
   },
   {
-    date: "14 SEP 2025",
-    title: "Winners Announced",
+    date: "09 SEP 2026",
+    title: "Phase 2 Results",
     description: "Top 3 winners per pool are declared.",
     status: "UPCOMING",
     color: "#F59E0B", // gold
   },
   {
-    date: "18 SEP 2025",
+    date: "LATE SEP 2026",
     title: "Felicitation at IIT Kanpur",
     description: "Grand finale and prize distribution at the IIT Kanpur campus.",
     status: "UPCOMING",
@@ -103,7 +103,7 @@ export const FAQS = [
   },
   {
     question: "How are pools assigned?",
-    answer: "Based on your class — Little Champs (5–6), Super Nova (7–8), The Titans (9–10), Elite Explorers (11–12).",
+    answer: "Based on your class — Little Champs (5–6), Super Nova (7–8), The Titans (9–10), Elite Explorer (11–12).",
   },
   {
     question: "What are the prizes?",

@@ -105,6 +105,12 @@ export function Navigation() {
                 <Link
                   key={link.label}
                   href={link.href}
+                  onClick={(e) => {
+                    if (link.href.startsWith("/#") && window.location.pathname === "/") {
+                      e.preventDefault();
+                      scrollTo(link.href.replace("/", ""));
+                    }
+                  }}
                   className={cn(
                     "group relative font-inter text-sm font-semibold tracking-wide transition-colors duration-300",
                     isActive ? "text-brand-orange-text" : "text-text-secondary hover:text-brand-orange-text"
@@ -169,7 +175,17 @@ export function Navigation() {
                   transition={{ delay: 0.1 + i * 0.1 }}
                   className="font-space-grotesk text-4xl font-bold text-text-primary hover:text-brand-orange-text"
                 >
-                  <Link href={link.href} onClick={() => setMobileMenuOpen(false)}>
+                  <Link 
+                    href={link.href} 
+                    onClick={(e) => {
+                      if (link.href.startsWith("/#") && window.location.pathname === "/") {
+                        e.preventDefault();
+                        scrollTo(link.href.replace("/", ""));
+                      } else {
+                        setMobileMenuOpen(false);
+                      }
+                    }}
+                  >
                     {link.label}
                   </Link>
                 </motion.div>

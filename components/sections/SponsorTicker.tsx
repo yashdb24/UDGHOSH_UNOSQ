@@ -4,9 +4,7 @@ import React from "react";
 import Image from "next/image";
 
 const SPONSORS = [
-  { name: "ExtraMarks", src: "/assets/extramarks.png" },
-  { name: "Physics Wallah", src: "/assets/physics_wallah.png" },
-  { name: "SpeedExam", src: "/assets/speedexam.png" },
+  { name: "GradeMe AI", src: "/assets/grademe_ai_logo.jpg" },
 ];
 
 export function SponsorTicker() {
