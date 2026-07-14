@@ -19,7 +19,7 @@ export default function IndividualPayment() {
           View the below PDF to see instructions to pay via SBI Collect:
         </p>
         <p className="font-inter text-text-primary mb-8 text-center text-lg">
-          Please make a payment of <strong className="text-brand-orange">₹120</strong> through SBI Collect.
+          Please make a payment of <strong className="text-brand-orange">₹130</strong> through SBI Collect.
         </p>
 
         <div className="w-full bg-white/60 backdrop-blur-md rounded-3xl border border-[#ECEAF5] shadow-xl p-6 mb-8 flex flex-col items-center">

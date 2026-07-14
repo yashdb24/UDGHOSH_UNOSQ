@@ -94,8 +94,8 @@ export const FAQS = [
     answer: "Any school student from Class 5 to 12 across India. Students are divided into four age-group pools for fair competition.",
   },
   {
-    question: "Is the quiz free to register?",
-    answer: "Yes, UNOSQ registration is completely free of cost.",
+    question: "Is the exam free of cost?",
+    answer: "No. The Registration Fee for UNOSQ is ₹130 per participant including all taxes.",
   },
   {
     question: "What subjects does the quiz cover?",

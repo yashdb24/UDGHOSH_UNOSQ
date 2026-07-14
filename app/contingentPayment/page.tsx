@@ -54,7 +54,7 @@ export default function ContingentPayment() {
                 </li>
                 <li className="flex justify-between pt-1">
                   <span className="text-text-secondary">Amount:</span>
-                  <strong className="text-brand-orange">₹120 x (no. of students)</strong>
+                  <strong className="text-brand-orange">₹130 x (no. of students)</strong>
                 </li>
               </ul>
             </div>

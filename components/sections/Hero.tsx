@@ -106,7 +106,7 @@ export function Hero() {
               rel="noopener noreferrer"
               className="group relative overflow-hidden rounded-full bg-brand-orange px-8 py-3.5 font-inter text-base font-semibold text-white shadow-[0_3px_0_#C25200] transition-all duration-150 hover:brightness-110 active:translate-y-[2px] active:shadow-[0_1px_0_#C25200]"
             >
-              Register Now — It's Free
+              Register Now
             </a>
             <a
               href="#resources"
