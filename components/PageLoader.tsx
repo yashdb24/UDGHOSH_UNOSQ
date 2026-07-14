@@ -10,7 +10,7 @@ export function PageLoader() {
     // Only show on first load
     const hasLoaded = sessionStorage.getItem("unosq-loaded");
     if (hasLoaded) {
-      setIsLoading(false);
+      requestAnimationFrame(() => setIsLoading(false));
       return;
     }
 

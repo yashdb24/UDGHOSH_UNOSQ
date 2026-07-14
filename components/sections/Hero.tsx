@@ -35,8 +35,8 @@ export function Hero() {
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-bg-primary pt-20"
       onMouseMove={handleMouseMove}
     >
-      {/* FULL SCREEN 3D SCENE */}
-      <div className="absolute inset-0 z-30 pointer-events-none">
+      {/* FULL SCREEN 3D SCENE (Hidden on Mobile to save GPU and prevent overlay bugs) */}
+      <div className="absolute inset-0 z-30 pointer-events-none hidden md:block">
         <Scene3D cameraPosition={[0, 0, 8]}>
           <HeroScene />
         </Scene3D>
@@ -62,7 +62,7 @@ export function Hero() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-orange"></span>
               </span>
               <span className="font-inter text-xs font-semibold uppercase tracking-widest text-brand-orange-text">
-                IIT Kanpur × Udghosh '25
+                IIT Kanpur × Udghosh &apos;26
               </span>
             </div>
           </motion.div>
@@ -71,7 +71,7 @@ export function Hero() {
           <div className="mb-6 flex flex-col items-center md:items-start">
             <TextReveal
               as="h1"
-              text="UNOSQ '25"
+              text="UNOSQ &apos;26"
               className="font-space-grotesk text-[clamp(4.5rem,8vw,8rem)] font-extrabold leading-[0.9] tracking-[-0.04em] text-text-primary"
             />
             <TextReveal

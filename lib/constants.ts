@@ -1,4 +1,4 @@
-export const REGISTER_HREF = "https://unosq.udghosh.org.in/individualregister";
+export const REGISTER_HREF = "/register";
 
 export const POOLS = [
   {
@@ -9,6 +9,7 @@ export const POOLS = [
     description: "The spark of curiosity. Perfect for young explorers ready to test their knowledge for the first time.",
     accentColor: "brand-blue", // Used for mappings like `text-brand-blue`, `border-brand-blue` etc.
     hex: "#3B82F6",
+    paperLink: "https://drive.google.com/uc?export=download&id=1RgffuHXWgvX3UNwqYY85b4jVv4IFl7y9",
   },
   {
     id: "super-nova",
@@ -18,6 +19,7 @@ export const POOLS = [
     description: "Rising stars with an appetite for challenge. Logical reasoning meets sports trivia at the next level.",
     accentColor: "brand-violet",
     hex: "#8B5CF6",
+    paperLink: "https://drive.google.com/uc?export=download&id=1GYz96DG6TKNDiR58jCRphU8MXRC_r5ji",
   },
   {
     id: "the-titans",
@@ -27,6 +29,7 @@ export const POOLS = [
     description: "Sharp minds and competitive fire. This pool separates the good from the genuinely great.",
     accentColor: "brand-orange",
     hex: "#FF6B00",
+    paperLink: "https://drive.google.com/uc?export=download&id=13TLSFRkANqOVIiYN2gE79NBko7aZ47RY",
   },
   {
     id: "elite-explorers",
@@ -36,6 +39,7 @@ export const POOLS = [
     description: "The sharpest quizzers in the country. Built for those who eat textbooks for breakfast.",
     accentColor: "brand-gold",
     hex: "#F59E0B",
+    paperLink: "https://drive.google.com/uc?export=download&id=13ksousfiKmWl-VXVvILIpkQLmJ_Jk8ui",
   },
 ];
 
@@ -86,7 +90,7 @@ export const TIMELINE = [
 
 export const FAQS = [
   {
-    question: "Who can participate in UNOSQ '25?",
+    question: "Who can participate in UNOSQ '26?",
     answer: "Any school student from Class 5 to 12 across India. Students are divided into four age-group pools for fair competition.",
   },
   {
@@ -117,17 +121,17 @@ export const FAQS = [
 
 export const TEAM = [
   {
-    name: "Mantresh Dhahava",
+    name: "Yuvraj",
     role: "Head, UNOSQ",
     image: "/assets/Mantresh_Dhahava.jpg",
   },
   {
-    name: "Amrit Raj",
+    name: "Amlan",
     role: "Head, UNOSQ",
     image: "/assets/Amrit_Raj.jpg",
   },
   {
-    name: "Vansh Mina",
+    name: "Anshika",
     role: "Head, UNOSQ",
     image: "/assets/Vansh_Mina.jpg",
   },

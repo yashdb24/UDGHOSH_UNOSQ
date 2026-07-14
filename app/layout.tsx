@@ -4,7 +4,6 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import { PageLoader } from "@/components/PageLoader";
 import { Navigation } from "@/components/Navigation";
-import { PaperFlockOverlay } from "@/components/three/PaperFlockOverlay";
 
 const spaceGrotesk = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -25,7 +24,7 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "UNOSQ '25 | Udghosh National Open School Quiz",
+  title: "UNOSQ '26 | Udghosh National Open School Quiz",
   description: "India's premier open quiz competition for school students from Classes 5 to 12, organized by Udghosh, IIT Kanpur.",
 };
 
@@ -39,13 +38,15 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${syne.variable} antialiased`}
     >
-      <body>
+      <body
+        className={`${spaceGrotesk.variable} ${inter.variable} bg-bg-primary font-inter text-text-primary antialiased`}
+      >
         <PageLoader />
-        {/* Fixed, page-wide canvas: paper plane/crane/boat fly across as you scroll. */}
-        <PaperFlockOverlay />
         <LenisProvider>
           <Navigation />
-          {children}
+          <main className="min-h-screen">
+            {children}
+          </main>
         </LenisProvider>
       </body>
     </html>

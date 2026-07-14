@@ -12,32 +12,45 @@ interface PaperModelProps {
   textureUrl?: string;
 }
 
+const DUMMY_TEXTURE = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
+
 export function PaperModel({ url, color, scale = 1, textureUrl }: PaperModelProps) {
   const { scene } = useGLTF(url);
-  const texture = textureUrl ? useTexture(textureUrl) : null;
-  if (texture) {
-    texture.wrapS = THREE.RepeatWrapping;
-    texture.wrapT = THREE.RepeatWrapping;
-  }
+  // Always call useTexture, use a 1x1 transparent dummy if no URL provided to satisfy Rules of Hooks
+  const texture = useTexture(textureUrl || DUMMY_TEXTURE);
 
   const cloned = useMemo(() => {
     const clone = scene.clone(true);
-    if (color || texture) {
-      clone.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          child.material = new THREE.MeshStandardMaterial({
-            color: color || "#FFFFFF",
-            map: texture || null,
-            roughness: 0.85,
-            metalness: 0.02,
-          });
-          child.castShadow = false;
-          child.receiveShadow = false;
+    if (color || textureUrl) {
+      clone.traverse((child: any) => {
+        if (child.isMesh) {
+          // Clone material to avoid mutating shared GLTF cache
+          const mat = child.material.clone();
+          
+          if (color) {
+            mat.color = new THREE.Color(color);
+          }
+          
+          // Only apply texture if a real textureUrl was provided
+          if (textureUrl && texture) {
+            // Clone texture to avoid mutating the shared Drei cache (fixes immutability lint error)
+            const clonedTexture = texture.clone();
+            clonedTexture.wrapS = THREE.RepeatWrapping;
+            clonedTexture.wrapT = THREE.RepeatWrapping;
+            clonedTexture.needsUpdate = true;
+            mat.map = clonedTexture;
+          }
+          
+          // Basic paper material settings
+          mat.roughness = 0.9;
+          mat.metalness = 0.1;
+          mat.side = THREE.DoubleSide;
+          child.material = mat;
         }
       });
     }
     return clone;
-  }, [scene, color, texture]);
+  }, [scene, color, texture, textureUrl]);
 
   return <primitive object={cloned} scale={scale} />;
 }

@@ -62,7 +62,7 @@ export function Timeline() {
           ease: "expo.out",
           scrollTrigger: {
             trigger: node,
-            start: "top 60%", // Triggers when node reaches 60% of viewport
+            start: "top 50%", // Syncs exactly with line's "top center" to "bottom center" progress
             toggleActions: "play none none reverse",
           },
         }
@@ -116,7 +116,7 @@ export function Timeline() {
           </div>
 
           {/* Timeline Nodes */}
-          <div className="flex flex-col gap-12 md:gap-24">
+          <div className="flex flex-col gap-24 md:gap-40">
             {TIMELINE.map((item, index) => {
               const isLeft = index % 2 === 0;
 

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { SponsorTicker } from "@/components/sections/SponsorTicker";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { PaperFlockOverlay } from "@/components/three/PaperFlockOverlay";
 
 // Dynamically import sections below the fold to improve initial load performance
 const About = dynamic(() => import("@/components/sections/About").then((mod) => mod.About), { ssr: false });
@@ -20,6 +21,7 @@ const Footer = dynamic(() => import("@/components/sections/Footer").then((mod) =
 export default function Home() {
   return (
     <main>
+      <PaperFlockOverlay />
       <Hero />
       <SponsorTicker />
       <TrustBar />

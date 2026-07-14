@@ -51,7 +51,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              UNOSQ — Udghosh National Open School Quiz — is India's premier open quiz competition for school students from Classes 5 to 12, organized by Udghosh, Asia's largest college sports festival hosted annually at IIT Kanpur.
+              UNOSQ — Udghosh National Open School Quiz — is India&apos;s premier open quiz competition for school students from Classes 5 to 12, organized by Udghosh, Asia&apos;s largest college sports festival hosted annually at IIT Kanpur.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              It is a celebration of intellect and sportsmanship, offering participants the chance to interact with academic luminaries and celebrated sports personalities through specially curated seminars, workshops, and exclusive Pronite passes.
+              &apos;Knowledge expands when shared&apos; and with this very spirit, UNOSQ has been taking its course towards a larger audience every year, fostering young school minds. Having witnessed overwhelming participation for UNOSQ &apos;23 with around 5,000+ registrations, and for UNOSQ &apos;24 with around 10,000+ registrations from across India, this year, we aim to surpass our legacy. through specially curated seminars, workshops, and exclusive Pronite passes.
             </motion.p>
           </div>
 
@@ -82,13 +82,8 @@ export function About() {
         <div className="flex flex-1 items-center justify-center lg:justify-end relative">
           
           {/* Background Graphic Right (Science Frame) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-60 pointer-events-none w-[150%] h-[150%] max-w-[900px]">
-            <Image src="/elements/science_background_website.png" alt="Background Right Frame" fill className="object-contain" />
-          </div>
-
-          {/* Backpack Accent */}
-          <div className="absolute -bottom-10 -left-16 z-20 w-48 h-48 pointer-events-none drop-shadow-[0_16px_24px_rgba(0,0,0,0.15)]">
-            <Image src="/elements/background-removed.png" alt="School Backpack" fill className="object-contain" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-60 pointer-events-none w-[150%] h-[250%] max-w-[900px]">
+            <Image src="/elements/science_background_website.png" alt="Background Right Frame" fill className="object-cover md:object-contain" />
           </div>
 
           <motion.div
@@ -105,7 +100,7 @@ export function About() {
               <div className="group flex h-full flex-col items-start gap-6 p-8 rounded-2xl bg-soft-orange shadow-card border border-brand-orange/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
                 <Trophy className="h-8 w-8 text-brand-orange-text transition-transform duration-300 group-hover:scale-110" />
                 <div className="mt-auto">
-                  <div className="font-space-grotesk text-[3.5rem] font-extrabold leading-none text-brand-orange-text">
+                  <div className="font-space-grotesk text-[clamp(2.5rem,8vw,3.5rem)] font-extrabold leading-none text-brand-orange-text">
                     <CountUp to={5000} suffix="+" />
                   </div>
                   <div className="mt-2 font-inter text-sm font-medium text-text-secondary">Students Reached</div>
@@ -118,7 +113,7 @@ export function About() {
               <div className="group flex h-full flex-col items-start gap-6 p-8 rounded-2xl bg-soft-blue shadow-card border border-brand-blue/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
                 <School className="h-8 w-8 text-brand-blue transition-transform duration-300 group-hover:scale-110" />
                 <div className="mt-auto">
-                  <div className="font-space-grotesk text-[3.5rem] font-extrabold leading-none text-brand-blue">
+                  <div className="font-space-grotesk text-[clamp(2.5rem,8vw,3.5rem)] font-extrabold leading-none text-brand-blue">
                     <CountUp to={100} suffix="+" />
                   </div>
                   <div className="mt-2 font-inter text-sm font-medium text-text-secondary">Schools Participated</div>
@@ -131,7 +126,7 @@ export function About() {
               <div className="group flex h-full flex-col items-start gap-6 p-8 rounded-2xl bg-soft-purple shadow-card border border-brand-purple/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
                 <Clock className="h-8 w-8 text-brand-purple transition-transform duration-300 group-hover:scale-110" />
                 <div className="mt-auto">
-                  <div className="font-space-grotesk text-[3.5rem] font-extrabold leading-none text-brand-purple">
+                  <div className="font-space-grotesk text-[clamp(2.5rem,8vw,3.5rem)] font-extrabold leading-none text-brand-purple">
                     <CountUp to={5} suffix="+" />
                   </div>
                   <div className="mt-2 font-inter text-sm font-medium text-text-secondary">Years of Legacy</div>
@@ -144,7 +139,7 @@ export function About() {
               <div className="group flex h-full flex-col items-start gap-6 p-8 rounded-2xl bg-soft-gold shadow-card border border-brand-gold/10 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300">
                 <Users className="h-8 w-8 text-brand-gold transition-transform duration-300 group-hover:scale-110" />
                 <div className="mt-auto">
-                  <div className="font-space-grotesk text-[3.5rem] font-extrabold leading-none text-brand-gold">
+                  <div className="font-space-grotesk text-[clamp(2.5rem,8vw,3.5rem)] font-extrabold leading-none text-brand-gold">
                     <CountUp to={25} suffix="+" />
                   </div>
                   <div className="mt-2 font-inter text-sm font-medium text-text-secondary">Expert Mentors</div>
@@ -156,7 +151,7 @@ export function About() {
       </div>
 
       {/* Gallery Strip */}
-      <div className="mt-32 w-full overflow-hidden flex gap-4 px-4 pb-12">
+      <div className="mt-32 w-full overflow-x-auto flex gap-4 px-4 pb-12 snap-x snap-mandatory">
         {["galleryImage1", "GalleryImage2", "GalleryImage3", "GalleryImage4", "GalleryImage5"].map((img, i) => (
           <div key={i} className="relative h-48 w-72 shrink-0 rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300 shadow-md">
             <Image src={`/assets/gallery/${img}.webp`} alt={`Gallery Image ${i + 1}`} fill className="object-cover" />

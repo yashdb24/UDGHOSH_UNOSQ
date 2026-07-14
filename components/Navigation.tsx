@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -9,12 +10,14 @@ import { useLenis } from "@/components/LenisProvider";
 import { REGISTER_HREF } from "@/lib/constants";
 
 const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Pools", href: "#pools" },
-  { label: "Phases", href: "#phases" },
-  { label: "Timeline", href: "#timeline" },
-  { label: "Prizes", href: "#prizes" },
-  { label: "FAQs", href: "#faq" },
+  { label: "Home", href: "/" },
+  { label: "Pools", href: "/#pools" },
+  { label: "Phases", href: "/#phases" },
+  { label: "Timeline", href: "/#timeline" },
+  { label: "Prizes", href: "/#prizes" },
+  { label: "Results", href: "/result" },
+  { label: "FAQs", href: "/faq" },
+  { label: "Login", href: "/login" },
 ];
 
 export function Navigation() {
@@ -99,9 +102,9 @@ export function Navigation() {
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href;
               return (
-                <button
+                <Link
                   key={link.label}
-                  onClick={() => scrollTo(link.href)}
+                  href={link.href}
                   className={cn(
                     "group relative font-inter text-sm font-semibold tracking-wide transition-colors duration-300",
                     isActive ? "text-brand-orange-text" : "text-text-secondary hover:text-brand-orange-text"
@@ -113,23 +116,21 @@ export function Navigation() {
                       "absolute -bottom-1 left-0 h-[2px] bg-brand-orange transition-transform duration-300 origin-left rounded-full",
                       isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100 w-full"
                     )}
-                    style={{ width: isActive ? "100%" : "100%" }}
+                    style={{ width: "100%" }}
                   />
-                </button>
+                </Link>
               );
             })}
           </nav>
 
           {/* Right: CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <a
+            <Link
               href={REGISTER_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group relative hidden overflow-hidden rounded-full bg-brand-orange px-6 py-2.5 font-inter text-sm font-semibold text-white shadow-[0_3px_0_#C25200] transition-all duration-150 hover:brightness-110 active:translate-y-[2px] active:shadow-[0_1px_0_#C25200] md:inline-flex"
             >
               <span>Register Now</span>
-            </a>
+            </Link>
 
             <button
               className="p-2 text-text-secondary md:hidden"
@@ -161,28 +162,32 @@ export function Navigation() {
             </div>
             <div className="flex flex-1 flex-col items-center justify-center gap-8">
               {NAV_LINKS.map((link, i) => (
-                <motion.button
+                <motion.div
                   key={link.label}
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + i * 0.1 }}
-                  onClick={() => scrollTo(link.href)}
                   className="font-space-grotesk text-4xl font-bold text-text-primary hover:text-brand-orange-text"
                 >
-                  {link.label}
-                </motion.button>
+                  <Link href={link.href} onClick={() => setMobileMenuOpen(false)}>
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
-              <motion.a
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + NAV_LINKS.length * 0.1 }}
-                href={REGISTER_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 rounded-full bg-brand-orange px-8 py-4 font-inter text-lg font-semibold text-white shadow-[0_3px_0_#C25200] transition-all duration-150 hover:brightness-110 active:translate-y-[2px] active:shadow-[0_1px_0_#C25200]"
+                className="mt-8"
               >
-                Register Now
-              </motion.a>
+                <Link
+                  href={REGISTER_HREF}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-full bg-brand-orange px-8 py-4 font-inter text-lg font-semibold text-white shadow-[0_3px_0_#C25200] transition-all duration-150 hover:brightness-110 active:translate-y-[2px] active:shadow-[0_1px_0_#C25200]"
+                >
+                  Register Now
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

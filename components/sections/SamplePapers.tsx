@@ -73,7 +73,7 @@ export function SamplePapers() {
                 style={{ borderTop: `4px solid ${pool.hex}` }}
               >
                 <div className="mb-6 flex items-center justify-between">
-                  <div className="h-16 w-16 -ml-4">
+                  <div className="h-16 w-16 -ml-4 hidden md:block">
                     <Scene3D cameraPosition={[0, 0, 3]}>
                       <PoolAccentScene color={pool.hex} shape={SHAPES[pool.id] || "icosahedron"} />
                     </Scene3D>
@@ -95,14 +95,13 @@ export function SamplePapers() {
                 </h3>
 
                 <a
-                  href="#"
+                  href={pool.paperLink}
                   download
                   className="group mt-auto inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-inter text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                   style={{ backgroundColor: pool.hex }}
                 >
                   <Download size={16} />
                   <span>Download PDF</span>
-                  {/* REPLACE WITH ACTUAL PDF LINK */}
                 </a>
               </div>
             </motion.div>

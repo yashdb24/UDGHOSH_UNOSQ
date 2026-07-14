@@ -30,7 +30,7 @@ export function Button({
   const Component = href ? "a" : "button";
 
   return (
-    // @ts-ignore
+    // @ts-expect-error - TS gets confused by dynamic Component rendering
     <Component
       className={cn(baseStyles, variants[variant], className)}
       href={href}

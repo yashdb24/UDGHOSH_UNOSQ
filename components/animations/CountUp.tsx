@@ -18,7 +18,7 @@ export function CountUp({ to, duration = 2, className, suffix = "" }: CountUpPro
 
   useEffect(() => {
     if (shouldReduceMotion) {
-      setCount(to);
+      requestAnimationFrame(() => setCount(to));
       return;
     }
 

@@ -11,8 +11,7 @@ import { DecorativeIcon } from "@/components/ui/DecorativeIcons";
 import { FloatingPaperElements } from "@/components/ui/FloatingPaperElements";
 import Image from "next/image";
 
-const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => m.Scene3D), { ssr: false });
-const PrizeTrophyScene = dynamic(() => import("@/components/three/PrizeTrophyScene").then((m) => m.PrizeTrophyScene), { ssr: false });
+// 3D components removed to save bandwidth
 
 export function Prizes() {
   const containerVariants: Variants = {
@@ -58,12 +57,7 @@ export function Prizes() {
             <DecorativeIcon icon="ribbon" className="absolute top-16 right-16 transition-transform duration-300 group-hover:scale-110" size={32} rotation={-10} color="#4229d5" opacity={0.2} />
             <DecorativeIcon icon="podium" className="absolute bottom-12 left-16 transition-transform duration-300 group-hover:scale-110" size={40} rotation={10} color="#1677ff" opacity={0.2} />
 
-            {/* 3D Trophy replaces the flat SVG icon */}
-            <div className="mb-6 relative w-80 h-80 sm:w-96 sm:h-96 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-              <Scene3D cameraPosition={[0, 0, 3.6]}>
-                <PrizeTrophyScene />
-              </Scene3D>
-            </div>
+
             <h3 className="mb-4 font-space-grotesk text-[clamp(4rem,8vw,6rem)] font-extrabold leading-none tracking-tight text-brand-gold">
               ₹50,000+
             </h3>
@@ -133,9 +127,12 @@ export function Prizes() {
               <h4 className="mb-3 font-space-grotesk text-xl font-bold text-text-primary">
                 Udghosh Pronite Passes
               </h4>
-              <p className="font-inter text-sm leading-relaxed text-text-secondary">
-                Access to Udghosh '25's legendary pro-night events at IIT Kanpur campus.
+              <p className="font-inter text-sm leading-relaxed text-text-secondary md:text-base">
+                Access to Udghosh &apos;26&apos;s legendary pro-night events at IIT Kanpur campus.
               </p>
+              <div className="relative w-full h-24 rounded-lg bg-black/5 overflow-hidden mt-auto group-hover:shadow-md transition-all duration-300 flex items-center justify-center border border-black/5">
+                 <span className="text-text-muted text-[10px] font-inter uppercase tracking-widest">Image Placeholder</span>
+              </div>
             </div>
           </motion.div>
         </motion.div>

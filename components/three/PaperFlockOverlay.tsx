@@ -137,7 +137,7 @@ export function PaperFlockOverlay() {
   if (reduced) return null;
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-30">
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-30 hidden md:block">
       <Canvas
         dpr={[1, 1.5]}
         gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}

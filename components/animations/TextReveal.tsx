@@ -21,6 +21,7 @@ export function TextReveal({
   gradientWords = [],
   gradientClass = "bg-gradient-to-br from-brand-orange via-brand-violet to-brand-blue bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]",
 }: TextRevealProps) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Component = as as any;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
@@ -43,7 +44,8 @@ export function TextReveal({
     );
   }
 
-  const MotionComponent = motion(Component);
+  // Safe mapping to prevent recreating component during render
+  const MotionComponent = as === "h1" ? motion.h1 : as === "h3" ? motion.h3 : as === "p" ? motion.p : motion.h2;
 
   return (
     <MotionComponent

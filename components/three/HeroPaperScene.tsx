@@ -70,7 +70,7 @@ export function HeroPaperScene() {
       // Skip the tumble show for reduced-motion users, land straight on the plane.
       gsap.set(crumpledRef.current.scale, { x: 0, y: 0, z: 0 });
       gsap.set(planeRef.current.scale, { x: 1, y: 1, z: 1 });
-      setIdle(true);
+      requestAnimationFrame(() => setIdle(true));
       return;
     }
 
